@@ -52,12 +52,17 @@ function handleCanvasClick() {
   }
 }
 
+function handleRightClick(event) {
+  event.preventDefault();
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove); //mousemove --when moving on canvas
   canvas.addEventListener("mousedown", startPainting); //mousedown --when clicking
   canvas.addEventListener("mouseup", stopPainting); //mouseup --when stopping keep clicking
   canvas.addEventListener("mouseleave", stopPainting); //mouseleave --when mouse off to the canvas
   canvas.addEventListener("click", handleCanvasClick);
+  canvas.addEventListener("contextmenu", handleRightClick); //contextmenu --right click button on mouse
 }
 
 function handleColorClick(event) {
