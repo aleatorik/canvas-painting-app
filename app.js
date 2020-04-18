@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d"); //context is how we manipulate pixels in ca
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+const saveBtn = document.getElementById("jsSave");
 
 const INITIAL_COLOR = "2c2c2c";
 const CANVAS_SIZE = 600;
@@ -97,4 +98,16 @@ function handleModeClick() {
 
 if (mode) {
   mode.addEventListener("click", handleModeClick);
+}
+
+function handleSaveClick() {
+  const image = canvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = "mypainting.png";
+  link.click();
+}
+
+if (saveBtn) {
+  saveBtn.addEventListener("click", handleSaveClick);
 }
