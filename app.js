@@ -120,14 +120,3 @@ function handleClearClick() {
 if (clearBtn) {
   clearBtn.addEventListener('click', handleClearClick);
 }
-
-function handleImageUpload() {
-  const image =
-    document.getElementById('jsLoad').files[0] || e.dataTransfer.files[0];
-  var reader = new FileReader();
-
-  reader.onload = function (e) {
-    document.getElementById('display-image').src = e.target.result;
-  };
-  reader.readAsDataURL(image);
-}
