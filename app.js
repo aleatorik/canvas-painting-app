@@ -1,21 +1,21 @@
-const canvas = document.getElementById("jsCanvas");
-const ctx = canvas.getContext("2d"); //context is how we manipulate pixels in canvas
-const colors = document.getElementsByClassName("jsColor");
-const range = document.getElementById("jsRange");
-const mode = document.getElementById("jsMode");
-const saveBtn = document.getElementById("jsSave");
-const clearBtn = document.getElementById("jsClear");
+const canvas = document.getElementById('jsCanvas');
+const ctx = canvas.getContext('2d'); //context is how we manipulate pixels in canvas
+const colors = document.getElementsByClassName('jsColor');
+const range = document.getElementById('jsRange');
+const mode = document.getElementById('jsMode');
+const saveBtn = document.getElementById('jsSave');
+const clearBtn = document.getElementById('jsClear');
 
-const INITIAL_COLOR = "2c2c2c";
+const INITIAL_COLOR = '2c2c2c';
 const CANVAS_SIZE = 600;
 
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
-ctx.fillStyle = "white";
+ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-ctx.strokeStyle = "INITIAL_COLOR";
-ctx.fillStyle = "INITIAL_COLOR";
+ctx.strokeStyle = 'INITIAL_COLOR';
+ctx.fillStyle = 'INITIAL_COLOR';
 ctx.lineWidth = 2.5; // controls__range in index.html
 
 let painting = false;
@@ -59,12 +59,12 @@ function handleRightClick(event) {
 }
 
 if (canvas) {
-  canvas.addEventListener("mousemove", onMouseMove); //mousemove --when moving on canvas
-  canvas.addEventListener("mousedown", startPainting); //mousedown --when clicking
-  canvas.addEventListener("mouseup", stopPainting); //mouseup --when stopping keep clicking
-  canvas.addEventListener("mouseleave", stopPainting); //mouseleave --when mouse off to the canvas
-  canvas.addEventListener("click", handleCanvasClick);
-  canvas.addEventListener("contextmenu", handleRightClick); //contextmenu --right click button on mouse
+  canvas.addEventListener('mousemove', onMouseMove); //mousemove --when moving on canvas
+  canvas.addEventListener('mousedown', startPainting); //mousedown --when clicking
+  canvas.addEventListener('mouseup', stopPainting); //mouseup --when stopping keep clicking
+  canvas.addEventListener('mouseleave', stopPainting); //mouseleave --when mouse off to the canvas
+  canvas.addEventListener('click', handleCanvasClick);
+  canvas.addEventListener('contextmenu', handleRightClick); //contextmenu --right click button on mouse
 }
 
 function handleColorClick(event) {
@@ -74,7 +74,7 @@ function handleColorClick(event) {
 }
 
 Array.from(colors).forEach((color) =>
-  color.addEventListener("click", handleColorClick)
+  color.addEventListener('click', handleColorClick)
 );
 
 function handleRangeChange(event) {
@@ -84,33 +84,33 @@ function handleRangeChange(event) {
 
 if (range) {
   //if문 안에 이벤트를 일으키는 이유는 range라는 element가 존재하는지 확인할 수 있는 안전성 측면 때문
-  range.addEventListener("input", handleRangeChange);
+  range.addEventListener('input', handleRangeChange);
 }
 
 function handleModeClick() {
   if (filling === true) {
     filling = false;
-    mode.innerText = "Fill";
+    mode.innerText = 'Fill';
   } else {
     filling = true;
-    mode.innerText = "Paint";
+    mode.innerText = 'Paint';
   }
 }
 
 if (mode) {
-  mode.addEventListener("click", handleModeClick);
+  mode.addEventListener('click', handleModeClick);
 }
 
 function handleSaveClick() {
-  const image = canvas.toDataURL("image/png");
-  const link = document.createElement("a");
+  const image = canvas.toDataURL('image/png');
+  const link = document.createElement('a');
   link.href = image;
-  link.download = "mypainting.png";
+  link.download = 'painting.png';
   link.click();
 }
 
 if (saveBtn) {
-  saveBtn.addEventListener("click", handleSaveClick);
+  saveBtn.addEventListener('click', handleSaveClick);
 }
 
 function handleClearClick() {
@@ -118,5 +118,16 @@ function handleClearClick() {
 }
 
 if (clearBtn) {
-  clearBtn.addEventListener("click", handleClearClick);
+  clearBtn.addEventListener('click', handleClearClick);
+}
+
+function handleImageUpload() {
+  const image =
+    document.getElementById('jsLoad').files[0] || e.dataTransfer.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    document.getElementById('display-image').src = e.target.result;
+  };
+  reader.readAsDataURL(image);
 }

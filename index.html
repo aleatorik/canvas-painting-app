@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Painting-board</title>
+    <title>Canvas Painting</title>
   </head>
   <body>
     <canvas id="jsCanvas" class="canvas"></canvas>
@@ -23,6 +23,11 @@
         <button id="jsMode">Fill</button>
         <button id="jsClear">Clear</button>
         <button id="jsSave">Save</button>
+        <label class="jsLoad">
+          <input id="jsLoad" type="file" onChange="handleImageUpload()" />
+          Load
+        </label>
+        <img id="display-image" src="" />
       </div>
       <div class="controls__colors" id="jsColors">
         <div
