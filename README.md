@@ -7,7 +7,7 @@ Built with <a href="https://www.w3.org/html/" target="blank">HTML</a>, <a href="
 ---
 
 <p align="center">
-<a href="https://aleatorik.github.io/canvas-painting/"><strong>DEMO</strong></a>
+<a href="https://github.com/aleatorik/canvas-painting-app"><strong>DEMO</strong></a>
 
 ![screenshot of main screen](/images/1.png)
 
